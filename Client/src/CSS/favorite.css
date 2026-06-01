@@ -1,0 +1,57 @@
+/* Favorite page loading and empty wishlist states. */
+.client-loading-pad {
+  padding-block: 14%;
+}
+
+.favorite,
+.favorite-empty-page {
+  width: 100%;
+  min-width: 0;
+}
+
+.favorite-empty-page {
+  min-height: calc(100vh - 260px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.favorite-empty-page .ant-result {
+  width: 100%;
+}
+
+@media (max-width: 576px) {
+  .favorite-empty-page {
+    min-height: 240px;
+    padding: 12px;
+  }
+
+  .favorite-empty-page .ant-result {
+    padding: 0 8px;
+  }
+
+  .favorite-empty-page .ant-result-icon {
+    margin-bottom: 10px;
+  }
+
+  .favorite-empty-page .ant-result-icon > .anticon {
+    font-size: 44px;
+  }
+
+  .favorite-empty-page .ant-result-title {
+    font-size: 18px;
+    line-height: 1.25;
+  }
+
+  .favorite-empty-page .ant-result-extra {
+    margin-top: 0;
+  }
+
+  .favorite-empty-page .ant-btn {
+    height: 36px;
+    padding-inline: 14px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+}

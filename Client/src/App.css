@@ -1,0 +1,76 @@
+::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+/* Root Part here here*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+:root {
+  --color-131921: Beige;
+  --color-3b4149: #d1d5da;
+  --color-febd69: #925d17;
+  --color-232f3e: #232f3e;
+  --color-button: #323232;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+}
+
+.layout {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+p {
+  font-size: 13px;
+}
+
+.gap-2 {
+  gap: 2px;
+}
+.gap-4 {
+  gap: 4px;
+}
+.gap-5 {
+  gap: 5px;
+}
+.gap-10 {
+  gap: 10px;
+}
+.gap-15 {
+  gap: 15px;
+}
+.gap-20 {
+  gap: 20px;
+}
+.gap-30 {
+  gap: 30px;
+}
+.gap-85 {
+  gap: 85px;
+}
+/*Root part End Here*/

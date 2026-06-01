@@ -1,0 +1,12 @@
+/* Shared checkout/proceed button component. */
+.checkoutButton {
+  font-size: 16px;
+
+  background-color: var(--color-button);
+  height: 40px;
+  width: 100%;
+  color: white;
+
+  border: 0;
+  border-radius: 30px;
+}

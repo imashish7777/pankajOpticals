@@ -1,0 +1,421 @@
+/* Header layout, search bar, desktop links, and mobile drawer. */
+.client-header-autocomplete {
+  width: 100%;
+}
+
+.client-header-duplicate-autocomplete {
+  width: 90%;
+}
+
+.client-header-duplicate-search {
+  height: 100%;
+  width: 10%;
+}
+
+.client-header-link-text-sm {
+  font-size: 11px;
+}
+
+/* Hearder Part *************************************/
+/* ================= HEADER WRAPPER ================= */
+
+/* ================= HEADER WRAPPER ================= */
+
+.header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* ================= TOP HEADER ================= */
+
+.header-upper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 10px 15px;
+  background: var(--color-131921);
+  flex-wrap: nowrap;
+}
+
+.header-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-bottom-drawer {
+  display: none;
+}
+
+/* ================= LOGO ================= */
+
+.header-logo {
+  flex: 0 0 160px;
+  display: flex;
+  align-items: center;
+}
+
+.header-logo img {
+  width: 220px;
+  height: auto;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+/* ================= SEARCH BAR ================= */
+
+.header-searchbar {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+/* AntD group FIX */
+.header-searchbar .ant-input-group {
+  display: flex !important;
+  width: 100%;
+  max-width: 600px;
+  height: 38px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* input wrapper */
+.header-searchbar .ant-select {
+  flex: 1;
+}
+
+/* input field */
+.header-searchbar .ant-select-selector {
+  height: 38px !important;
+  display: flex !important;
+  align-items: center;
+  border-radius: 0 !important;
+  font-size: 13px;
+}
+
+/* input text */
+.header-searchbar input {
+  height: 38px !important;
+  font-size: 13px;
+}
+
+/* search button */
+.header-searchbar button {
+  height: 38px !important;
+  width: 45px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-button) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* remove AntD spacing */
+.header-searchbar .ant-input-group-addon {
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* ================= HEADER LINKS ================= */
+
+.header-links {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+}
+
+.header-links a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  gap: 3px;
+  color: black;
+  white-space: nowrap;
+  text-align: center;
+  min-width: 55px;
+}
+
+.header-icons {
+  font-size: 18px;
+}
+
+/* ================= HEADER BOTTOM MENU ================= */
+
+/* ================= HEADER BOTTOM WRAPPER ================= */
+
+.header-bottom {
+  background: var(--color-131921);
+  padding: 6px 15px;
+}
+
+/* ================= LIMIT WIDTH SAME AS HEADER CONTENT ================= */
+
+.header-bottom .menu-scroll {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 1200px;   /* 🔥 key fix: limits stretch */
+  margin: 0 auto;      /* center align */
+  width: 100%;
+
+  gap: 10px;
+}
+
+/* ================= MENU ITEMS ================= */
+
+.header-bottom .menu-scroll a {
+  flex: 1; /* equal spacing */
+  text-align: center;
+
+  font-size: 13px;
+  padding: 8px 10px;
+
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  color: black;
+
+  white-space: nowrap;
+  transition: 0.2s ease;
+}
+
+/* hover */
+.header-bottom .menu-scroll a:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+  .header-bottom .menu-scroll {
+    max-width: 100%;
+    padding: 0 5px;
+  }
+}
+
+/* MOBILE: horizontal scroll */
+@media (max-width: 768px) {
+  .header-bottom .menu-scroll {
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 10px;
+    white-space: nowrap;
+  }
+
+  .header-bottom .menu-scroll a {
+    flex: 0 0 auto;
+    min-width: fit-content;
+  }
+}
+
+/* hide scrollbar */
+.header-bottom .menu-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* TABLET */
+@media (max-width: 992px) {
+  .header-logo {
+    flex: 0 0 130px;
+  }
+
+  .header-logo img {
+    width: 200px;
+  }
+
+  .header-searchbar .ant-input-group {
+    max-width: 450px;
+  }
+
+  .header-links {
+    gap: 12px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 74px;
+  }
+
+  .header-upper {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .header-brand-row {
+    flex: 0 0 auto;
+    width: auto;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  .header-logo {
+    flex: 0 0 auto;
+
+  }
+
+  .header-logo img {
+    width: 148px;
+  }
+
+  .header-searchbar {
+    order: 0;
+    flex: 1;
+    width: auto;
+    justify-content: center;
+  }
+
+  .header-searchbar .ant-input-group {
+    max-width: 100%;
+  }
+
+  .header-links {
+    order: 3;
+    display: none;
+  }
+
+  .header-links a {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .mobile-bottom-drawer {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 10px;
+    z-index: 1100;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    min-height: 58px;
+    padding: 8px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 18px;
+    background: white;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+  }
+
+  .mobile-bottom-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: black;
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  .mobile-bottom-item .header-icons {
+    font-size: 20px;
+  }
+
+  .mobile-bottom-profile .login-menu p {
+    margin: 0;
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  .mobile-bottom-profile .login-menu {
+    min-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-bottom-profile .login-menu p svg {
+    display: none;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 576px) {
+  .header-logo img {
+    width: 128px;
+  }
+
+  .header-links a span {
+    display: none;
+  }
+
+  .header-links a {
+    flex-direction: column;
+  }
+
+  .header-searchbar input {
+    font-size: 12px;
+  }
+
+  .mobile-bottom-profile .login-menu p {
+    font-size: 11px;
+  }
+}
+
+/* ================= HEADER ITEM BASE STYLE ================= */
+
+.header-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 3px;
+  min-width: 55px;
+
+  color: black;
+  text-align: center;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* hover effect like other links */
+.header-item:hover {
+  color: blue;
+}
+
+/* icon styling (same as other header icons) */
+.header-item .header-icon {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* text styling */
+.header-text {
+  font-size: 11px;
+  line-height: 12px;
+  margin: 0;
+}
+
+/* ================= MOBILE FIX ================= */
+
+@media (max-width: 576px) {
+  .header-text {
+    display: none; /* match other icons behavior */
+  }
+
+  .header-item {
+    min-width: auto;
+  }
+}
+
+/* Header Part End here******************************************/

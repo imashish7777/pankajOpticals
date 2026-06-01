@@ -1,0 +1,221 @@
+.admin-layout,
+.admin-main-layout,
+.admin-sider,
+.admin-sider .ant-layout-sider-children,
+.admin-content,
+.admin-content .table,
+.admin-filter-column,
+.ant-modal-body,
+.ant-select-dropdown .rc-virtual-list-holder {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.admin-layout::-webkit-scrollbar,
+.admin-main-layout::-webkit-scrollbar,
+.admin-sider::-webkit-scrollbar,
+.admin-sider .ant-layout-sider-children::-webkit-scrollbar,
+.admin-content::-webkit-scrollbar,
+.admin-content .table::-webkit-scrollbar,
+.admin-filter-column::-webkit-scrollbar,
+.ant-modal-body::-webkit-scrollbar,
+.ant-select-dropdown .rc-virtual-list-holder::-webkit-scrollbar,
+.ant-select-dropdown .rc-virtual-list-scrollbar {
+  display: none !important;
+}
+
+.ant-layout {
+  min-height: 100%;
+}
+
+.admin-layout {
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #f3f6fb;
+}
+
+.admin-sider {
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-main-layout {
+  min-width: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-header {
+  position: sticky;
+  top: 0;
+  z-index: 45;
+  padding: 0;
+  background: #ffffff;
+  box-shadow: 0 1px 10px rgba(15, 23, 42, 0.08);
+}
+
+.admin-header .ant-btn {
+  position: relative;
+  z-index: 46;
+}
+
+.admin-sidebar-logo {
+  width: 100%;
+  margin-top: 0;
+  background-color: #f4d57e;
+}
+
+.admin-menu-toggle {
+  width: 64px !important;
+  height: 64px !important;
+  font-size: 16px;
+}
+
+.admin-content {
+  margin: 24px 16px;
+  padding: 24px;
+  min-height: calc(100vh - 112px);
+  min-height: calc(100dvh - 112px);
+  background: #ffffff;
+  border-radius: 8px;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: visible;
+  flex: 0 0 auto;
+}
+
+.admin-content .container,
+.admin-content .container-fluid {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.admin-content .table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-collapse: collapse;
+}
+
+.admin-content .table td,
+.admin-content .table th {
+  vertical-align: middle;
+}
+
+.admin-content img {
+  max-width: 100%;
+}
+
+@media (max-width: 991px) {
+  .admin-content {
+    margin: 16px 12px;
+    padding: 16px;
+    min-height: calc(100vh - 96px);
+    min-height: calc(100dvh - 96px);
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  .admin-sider {
+    position: fixed !important;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    max-height: 100vh;
+    max-height: 100dvh;
+    padding-top: 64px;
+    z-index: 40;
+    box-shadow: 12px 0 28px rgba(15, 23, 42, 0.22);
+    transition: all 0.22s ease;
+  }
+
+  .admin-sider .ant-layout-sider-children {
+    height: calc(100vh - 64px);
+    height: calc(100dvh - 64px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-header {
+    border-bottom: 1px solid #e7ebf2;
+  }
+
+  .admin-content .table {
+    border: 1px solid #e8edf5;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: inset -14px 0 18px -18px rgba(15, 23, 42, 0.45);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-content .table th {
+    background: #f6f8fb;
+    color: #334155;
+    font-size: 13px;
+  }
+
+  .admin-content .table td,
+  .admin-content .table th {
+    padding: 12px 14px;
+  }
+
+  .admin-content .table tbody tr {
+    transition: background-color 0.18s ease, transform 0.18s ease;
+  }
+
+  .admin-content .table tbody tr:active {
+    background: #eef6ff;
+  }
+
+  .admin-content button,
+  .admin-content .btn,
+  .admin-content .ant-btn {
+    min-height: 38px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-content {
+    margin: 10px 8px;
+    padding: 12px;
+    min-height: calc(100vh - 72px);
+    min-height: calc(100dvh - 72px);
+    height: auto;
+    border-radius: 10px !important;
+  }
+
+  .admin-content::before {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 44px;
+    margin: -4px auto 10px;
+    border-radius: 999px;
+    background: #cbd5e1;
+  }
+
+  .admin-header .ant-btn {
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  .admin-sider {
+    padding-top: 56px;
+  }
+
+  .admin-sider .ant-layout-sider-children {
+    height: calc(100vh - 56px);
+    height: calc(100dvh - 56px);
+  }
+}

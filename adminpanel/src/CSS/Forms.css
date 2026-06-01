@@ -1,0 +1,66 @@
+.admin-property-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0 10px;
+}
+
+.admin-property-actions > div:not(.container-fluid) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  flex: 1 1 128px;
+  min-width: 128px;
+  order: 1;
+  padding: 6px 8px;
+  border: 1px solid #dbe5f1;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+  text-align: center;
+  cursor: pointer;
+}
+
+.admin-property-actions > div:not(.container-fluid) p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.admin-property-actions > .container-fluid {
+  order: 2;
+  flex: 0 0 100%;
+  width: 100%;
+}
+
+.admin-add-product-legacy-button {
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 0px 2px 2px rgba(176, 175, 175, 0.1);
+  border: 0;
+  height: 35px;
+  padding-inline: 40%;
+  padding-top: 1%;
+}
+
+.admin-add-product-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.admin-add-product-button p {
+  margin: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  line-height: 1.2;
+}

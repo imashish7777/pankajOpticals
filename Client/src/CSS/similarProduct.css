@@ -1,0 +1,12 @@
+/* Similar product rating stars. */
+.similar-product-star {
+  font-size: 100%;
+}
+
+.similar-product-star.is-rated {
+  color: #ffc107;
+}
+
+.similar-product-star.is-muted {
+  color: lightgray;
+}

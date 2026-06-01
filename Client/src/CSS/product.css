@@ -1,0 +1,358 @@
+/* App.css product card fallback rules kept before component-specific rules. */
+/*product component css start here*/
+.product {
+  border: 1px solid rgb(201, 196, 196);
+
+  border-radius: 20px;
+
+  background-color: white;
+  box-shadow: 0px 0px 2px 2px rgba(176, 175, 175, 0.1);
+  border: 0;
+  height: fit-content;
+}
+
+.product-image-section {
+  overflow: hidden;
+}
+.product .product-image {
+  width: 90%;
+  margin: -60px 10px -60px 14px;
+}
+
+.product-details p {
+  line-height: 5px;
+  font-size: 75%;
+}
+.product-details {
+  padding-top: 30px;
+  padding-left: 20px;
+
+  /* border:1px solid red; */
+}
+.similarProduct-details {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.similarProduct-details p {
+  line-height: 0px;
+  font-size: 70%;
+}
+
+.product .addtocartButton {
+  background-color: var(--color-button);
+  color: white;
+
+  height: 30px;
+  width:100%;
+  font-size: 12px;
+  margin-top: 10px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  
+
+}
+
+
+
+.product .buynowButton {
+  font-size: 12px;
+
+  background-color: var(--color-button);
+  color: white;
+
+  height: 30px;
+  width: 100%;
+  /* color: white; */
+  border: 0;
+  border-radius: 0;
+}
+
+.heart {
+  /* border: 1px solid red; */
+
+  float: right;
+  font-size: 25px;
+  color: rgb(182, 173, 173);
+
+  margin-top: 7px;
+  margin-right: 10px;
+
+  outline: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: bold;
+
+  &.active {
+    color: rgb(192, 39, 39);
+  }
+}
+/* filter Modal CSS Here*/
+
+.filter span {
+  color: rgb(121, 120, 120);
+  font-size: 12px;
+}
+.filter .row {
+  margin-bottom: 25px;
+}
+
+.filter label {
+  align-items: center;
+}
+
+.filter p {
+  font-size: 14px;
+  background-color: lightgray;
+}
+
+.product-brand {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.product-meta {
+  font-size: 13px;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+
+  background-color: #eee;
+
+  width: fit-content;
+
+  border-radius: 40px;
+
+  font-size: 15px;
+
+  gap: 6px;
+
+  padding-inline: 12px;
+
+  margin-top: 10px;
+}
+
+.rating-star {
+  color: #ffc107;
+  font-size: x-large;
+}
+
+.rating-divider {
+  border: 1px solid grey;
+  height: 20px;
+  margin-right: 3px;
+}
+
+.rating-count {
+  color: gray;
+}
+
+.wishlist-products{
+  display: flex;
+  gap: 20px;
+  max-width: 300px;
+}
+
+/* Product component card rules. */
+.product {
+  border: 1px solid rgb(201, 196, 196);
+
+  border-radius: 20px;
+
+  background-color: white;
+  box-shadow: 0px 0px 2px 2px rgba(176, 175, 175, 0.1);
+  border: 0;
+  height: fit-content;
+  max-width: 220px;
+}
+
+.product-image-section {
+  overflow: hidden;
+}
+.product .product-image {
+  width: 90%;
+  margin: -40px 10px -50px 14px;
+}
+
+.product-details p {
+  line-height: 5px;
+  font-size: 75%;
+}
+.product-details {
+  padding-top: 30px;
+  padding-left: 20px;
+
+  /* border:1px solid red; */
+}
+.similarProduct-details {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.similarProduct-details p {
+  line-height: 0px;
+  font-size: 70%;
+}
+
+.product .addtocartButton {
+  background-color: var(--color-button);
+  color: white;
+
+  height: 30px;
+  width:100%;
+  font-size: 12px;
+  margin-top: 10px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  
+
+}
+
+
+
+.product .buynowButton {
+  font-size: 12px;
+
+  background-color: var(--color-button);
+  color: white;
+
+  height: 30px;
+  width: 100%;
+  /* color: white; */
+  border: 0;
+  border-radius: 0;
+}
+
+.heart {
+  /* border: 1px solid red; */
+
+  float: right;
+  font-size: 25px;
+  color: rgb(182, 173, 173);
+
+  margin-top: 7px;
+  margin-right: 10px;
+
+  outline: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: bold;
+
+  &.active {
+    color: rgb(192, 39, 39);
+  }
+}
+/* filter Modal CSS Here*/
+
+.filter span {
+  color: rgb(121, 120, 120);
+  font-size: 12px;
+}
+.filter .row {
+  margin-bottom: 25px;
+}
+
+.filter label {
+  align-items: center;
+}
+
+.filter p {
+  font-size: 14px;
+  background-color: lightgray;
+}
+
+.product-brand {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.product-meta {
+  font-size: 13px;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+
+  background-color: #eee;
+
+  width: fit-content;
+
+  border-radius: 40px;
+
+  font-size: 15px;
+
+  gap: 6px;
+
+  padding-inline: 12px;
+
+  margin-top: 10px;
+}
+
+.rating-star {
+  color: #ffc107;
+  font-size: x-large;
+}
+
+.rating-divider {
+  border: 1px solid grey;
+  height: 20px;
+  margin-right: 3px;
+}
+
+.rating-count {
+  color: gray;
+}
+
+.wishlist-products{
+  display: flex;
+  gap: 20px;
+  max-width: 300px;
+}
+
+.favorite .products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.favorite .product {
+  width: 100%;
+  flex: 0 1 220px;
+}
+
+@media (max-width: 576px) {
+  .favorite {
+    padding: 14px !important;
+  }
+
+  .favorite .products-grid {
+    gap: 10px;
+  }
+
+  .favorite .product {
+    max-width: none;
+    flex: 0 1 calc(50% - 5px);
+  }
+}
+
+@media (max-width: 380px) {
+  .favorite .product {
+    flex-basis: 100%;
+  }
+}

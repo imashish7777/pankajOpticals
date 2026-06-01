@@ -1,0 +1,53 @@
+.admin-add-product-form-card {
+  border: 0;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 2px 2px rgba(176, 175, 175, 0.1);
+}
+
+.admin-dropzone {
+  height: 100px;
+  border-radius: 5px;
+}
+
+.admin-dropzone-text {
+  padding-top: 5%;
+}
+
+.admin-modal-preview-image,
+.admin-upload-preview-image {
+  width: 100%;
+}
+
+.admin-upload-preview-row {
+  display: flex;
+}
+
+.admin-upload-preview {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: 15px;
+}
+
+.admin-upload-preview-sm {
+  width: auto;
+}
+
+.admin-upload-preview-image {
+  border-radius: 10%;
+}
+
+.admin-upload-preview-image-sm,
+.admin-upload-preview-button-sm {
+  width: 20%;
+}
+
+.admin-upload-preview-button {
+  width: 100%;
+}
+
+.admin-save-product-button {
+  background-color: #f18132;
+  color: #ffffff;
+}

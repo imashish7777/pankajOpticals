@@ -1,0 +1,36 @@
+.admin-coupon-form-card {
+  border: 0;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 3px 1px rgba(176, 175, 175, 0.1);
+}
+
+.admin-coupon-grid > .col {
+  margin-bottom: 18px;
+}
+
+.admin-coupon-page .contanier-fluid {
+  border-radius: 12px;
+}
+
+@media (max-width: 991px) {
+  .admin-coupon-grid > * {
+    width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-coupon-grid > * {
+    width: 100%;
+  }
+
+  .admin-coupon-page .contanier-fluid {
+    padding: 12px;
+    border: 1px solid #e7ebf2;
+  }
+
+  .admin-coupon-page form.row > [class*="col-"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

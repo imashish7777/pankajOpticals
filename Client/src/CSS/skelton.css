@@ -1,0 +1,172 @@
+/* Skeleton loading cards, rows, product details, and responsive placeholders. */
+.skelton-page,
+.skelton-card,
+.skelton-row-card,
+.skelton-summary,
+.skelton-detail-panel {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(25, 31, 40, 0.05);
+}
+
+.skelton-line,
+.skelton-image,
+.skelton-large-image,
+.skelton-thumb,
+.skelton-pill,
+.skelton-spec,
+.skelton-button span {
+  border-radius: 999px;
+  background: linear-gradient(90deg, #eeeeee 25%, #f7f7f7 50%, #eeeeee 75%);
+  background-size: 200% 100%;
+  animation: skelton-pulse 1.2s ease-in-out infinite;
+}
+
+.skelton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 15px;
+  width: 100%;
+}
+
+.skelton-card {
+  min-height: 260px;
+}
+
+.skelton-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+
+.skelton-line {
+  height: 12px;
+  margin-bottom: 10px;
+}
+
+.skelton-line.wide {
+  width: 82%;
+}
+
+.skelton-line.medium {
+  width: 58%;
+}
+
+.skelton-line.short {
+  width: 34%;
+}
+
+.skelton-pill {
+  width: 90px;
+  height: 28px;
+  margin-top: 12px;
+}
+
+.skelton-product-details {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 18px;
+  padding: 16px;
+}
+
+.skelton-detail-images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.skelton-large-image {
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+}
+
+.skelton-specs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.skelton-spec {
+  height: 46px;
+  border-radius: 10px;
+}
+
+.skelton-cart {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 18px;
+  padding: 16px;
+}
+
+.skelton-list {
+  display: grid;
+  gap: 14px;
+}
+
+.skelton-row-card {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.skelton-thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+}
+
+.skelton-order-details {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.skelton-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 54px;
+  min-height: 20px;
+}
+
+.skelton-button span {
+  width: 42px;
+  height: 12px;
+}
+
+@keyframes skelton-pulse {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .skelton-product-details,
+  .skelton-cart {
+    grid-template-columns: 1fr;
+  }
+
+  .skelton-detail-images {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .skelton-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .skelton-row-card {
+    grid-template-columns: 90px minmax(0, 1fr);
+  }
+}

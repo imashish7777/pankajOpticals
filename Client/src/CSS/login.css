@@ -1,0 +1,183 @@
+/* Login and signup modal form layout. */
+.modal-dialog {
+  background-color: transparent;
+}
+.modal-content {
+  height: 500px;
+  padding-block: 0px !important;
+  background-color: white;
+}
+
+.modal-backdrop {
+  display: none;
+}
+
+.signinTogglePart {
+  justify-content: center;
+  gap: 4px;
+}
+
+.signup-modal-content {
+  /* border: 2px solid rgb(29, 203, 5); */
+  height: 600px;
+}
+
+.modal-custom-header {
+  position: relative;
+  /* max-width: 100px; */
+}
+
+.hoverIcon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  /* border:1px solid red; */
+  width: 45px;
+  height: 45px;
+  padding: 13px;
+}
+
+.login {
+  /* border: 1px solid rgb(239, 237, 237); */
+  border-radius: 14px;
+  width: 100%;
+  height: auto;
+  /* margin: auto; */
+  /* border: 1px solid red; */
+}
+
+.login-image {
+  width: 498px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.login-button {
+  min-height: 40px;
+  border-radius: 8px;
+  background-color: var(--color-button);
+  color: white;
+  font-weight: 600;
+}
+
+.login-button:hover {
+  background-color: #444;
+  color: white;
+}
+
+.login-button:disabled {
+  background-color: rgb(230, 228, 228);
+  color: #777;
+}
+
+.error {
+  color: red;
+  font-size: 10px;
+  height: 15px;
+}
+
+.login-fillups {
+  margin: 28px !important;
+}
+
+.login .form-control,
+.login .input-group-text {
+  min-height: 40px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.login .input-group .form-control {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.login .input-group .input-group-text {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  cursor: pointer;
+}
+
+.signin-text {
+  margin-bottom: 16px;
+  color: #222;
+  font-weight: 600;
+}
+
+.login-menu {
+  cursor: pointer;
+}
+
+.login-menu p {
+  margin: 0;
+}
+
+
+
+ .dropdown button,
+ .menu-links a {
+  color: rgb(1, 1, 94);
+  font-size: 11px;
+  letter-spacing: 0.3;
+  text-transform: uppercase;
+}
+
+.dropdown:hover {
+  transform: scale(0.97);
+  box-shadow: 2px 2px 4px rgba(126, 122, 122, 0.15);
+  transition: box-shadow 0.1 ease-in-out;
+}
+
+@media (max-width: 576px) {
+  .modal {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 2000 !important;
+    padding: 12px !important;
+  }
+
+  .modal-dialog {
+    width: 100%;
+    max-width: 420px;
+    min-height: calc(100dvh - 24px);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .modal-content {
+    width: 100%;
+    height: auto;
+    max-height: calc(100dvh - 24px);
+    overflow-y: auto;
+    border: 0;
+    border-radius: 14px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+  }
+
+  .login-fillups {
+    margin: 22px 16px !important;
+  }
+
+  .signin-text {
+    font-size: 20px !important;
+  }
+
+  .signinTogglePart,
+  .login .d-flex.align-items-center {
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .signinTogglePart p,
+  .login .d-flex.align-items-center p {
+    margin: 0 !important;
+  }
+
+  .hoverIcon {
+    width: 38px;
+    height: 38px;
+    padding: 10px;
+  }
+}

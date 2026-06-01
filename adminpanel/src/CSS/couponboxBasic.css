@@ -1,0 +1,36 @@
+.card {
+  width: 220px;
+  padding: 10px;
+  border-radius: 20px;
+  background: orange;
+  border: none;
+  color: #fff;
+  height: 250px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.card h1 {
+  font-size: 30px;
+  margin-bottom: 0px;
+}
+
+.card span {
+  font-size: 15px;
+}
+
+.image {
+  position: absolute;
+  opacity: .1;
+  left: 0;
+  top: 0;
+}
+
+.image2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: .1;
+}

@@ -1,0 +1,63 @@
+/* Checkout page, address selection, payment cards, and checkout helpers. */
+.client-cart-logo {
+  width: 180px;
+  margin-top: 15px;
+}
+
+.checkout-page .cart-header img.client-cart-logo {
+  width: 180px;
+  max-width: 180px;
+}
+
+.client-cart-breadcrumb {
+  font-size: 12px;
+  margin-left: 3%;
+}
+
+.client-soft-page-bg {
+  background-color: rgb(249, 249, 243);
+}
+
+.client-checkout-address-card {
+  border-radius: 20px;
+  background-color: #f0fcf8;
+  box-shadow: 0px 0px 2px 2px rgba(176, 175, 175, 0.1);
+  border: 0;
+  cursor: pointer;
+}
+
+.client-radio-lg {
+  height: 20px;
+  width: 20px;
+}
+
+.client-white-soft-card {
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 0px 2px 2px rgba(176, 175, 175, 0.1);
+  border: 0;
+  margin: 20px 0px;
+}
+
+.client-add-address-title {
+  font-weight: normal;
+  font-size: 20px;
+  color: darkblue;
+}
+
+.client-primary-action {
+  background-color: #f18132;
+  color: white;
+}
+.client-cursor-pointer {
+  cursor: pointer;
+}
+.paymentType {
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 0px 2px 2px rgba(176, 175, 175, 0.1);
+}
+.paymentType-logo {
+  height: 100%;
+  width: 30px;
+}

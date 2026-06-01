@@ -1,0 +1,63 @@
+.product {
+  border: 1px solid rgb(201, 196, 196);
+
+  border-radius: 20px;
+
+  background-color: white;
+  box-shadow: 0px 0px 2px 2px rgba(176, 175, 175, 0.1);
+  border: 0;
+  height: fit-content;
+  padding-bottom: 20px;
+}
+
+.product-image-section {
+  overflow: hidden;
+}
+.product .product-image {
+  width: 90%;
+  margin: -50px 10px -60px 14px;
+}
+
+.product-details {
+  padding-top: 30px;
+  padding-left: 20px;
+}
+
+.admin-product-card .product-details {
+  padding-right: 16px;
+}
+
+.admin-product-card .product-details p {
+  line-height: 1.45;
+  font-size: 88%;
+  margin-bottom: 8px;
+}
+
+.admin-product-card .product-details p:first-child {
+  font-size: 1rem;
+  line-height: 1.35;
+  margin-bottom: 9px;
+}
+
+.admin-product-card .product-details .text-muted {
+  line-height: 1.5;
+}
+
+/* filter Modal CSS Here*/
+
+.filter span {
+  color: rgb(121, 120, 120);
+  font-size: 12px;
+}
+.filter .row {
+  margin-bottom: 25px;
+}
+
+.filter label {
+  align-items: center;
+}
+
+.filter p {
+  font-size: 14px;
+  background-color: lightgray;
+}

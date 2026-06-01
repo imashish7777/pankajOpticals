@@ -1,0 +1,533 @@
+Exact controller code changes
+=============================
+
+File: Server/Controllers/authControllers.js
+-------------------------------------------
+
+1. FETCH_ADDRESS
+
+Before:
+const user = await userModel.findById(_id);
+res.send(user.addresses);
+
+After:
+const user = await userModel
+  .findById(_id)
+  .select("addresses")
+  .lean();
+
+res.send(user.addresses);
+
+
+2. ADD_ADDRESS
+
+Before:
+let user = await userModel.findById(_id);
+if (user) {
+  user.addresses.push({
+    firstname: firstname,
+    lastname: lastname,
+    phone: phone,
+    addresslineOne: addresslineOne,
+    addresslineTwo: addresslineTwo,
+    zip: zip,
+    state: state,
+    city: city,
+  });
+}
+user = await user.save();
+return res.send(user.addresses).status(201);
+
+After:
+const user = await userModel.findByIdAndUpdate(
+  _id,
+  {
+    $push: {
+      addresses: {
+        firstname: firstname,
+        lastname: lastname,
+        phone: phone,
+        addresslineOne: addresslineOne,
+        addresslineTwo: addresslineTwo,
+        zip: zip,
+        state: state,
+        city: city,
+      },
+    },
+  },
+  { new: true, select: "addresses" }
+);
+
+return res.send(user.addresses).status(201);
+
+
+3. DELETE_ADDRESS
+
+Before:
+let user = await userModel.findById(_id);
+if (user) {
+  let itemIndex = user.addresses.findIndex((i) => i._id == id);
+  if (itemIndex > -1) {
+    user.addresses.splice(itemIndex, 1);
+  }
+  cart = await user.save();
+  return res.send(user.addresses);
+}
+
+After:
+const user = await userModel.findByIdAndUpdate(
+  _id,
+  {
+    $pull: {
+      addresses: { _id: id },
+    },
+  },
+  { new: true, select: "addresses" }
+);
+
+if (user) {
+  return res.send(user.addresses);
+}
+
+
+4. UPDATA_ADDRESS
+
+Before:
+var user = await userModel.findById(_id);
+if (user) {
+  const findIndex = user.addresses.findIndex((i) => i._id == addressId);
+  if (findIndex > -1) {
+    var address = user.addresses[findIndex];
+    if (req?.body?.firstname) {
+      address.firstname = req?.body?.firstname;
+    }
+    if (req?.body?.lastname) {
+      address.lastname = req?.body?.lastname;
+    }
+    if (req?.body?.phone) {
+      address.phone = req?.body?.phone;
+    }
+
+    if (req?.body?.addresslineOne) {
+      address.addresslineOne = req?.body?.addresslineOne;
+    }
+    if (req?.body?.addresslineTwo) {
+      address.addresslineTwo = req?.body?.addresslineTwo;
+    }
+    if (req?.body?.city) {
+      address.city = req?.body?.city;
+    }
+    if (req?.body?.state) {
+      address.state = req?.body?.state;
+    }
+    if (req?.body?.zip) {
+      address.zip = req?.body?.zip;
+    }
+  }
+  user = await user.save();
+  return res.send(user.addresses);
+}
+
+After:
+const addressFields = [
+  "firstname",
+  "lastname",
+  "phone",
+  "addresslineOne",
+  "addresslineTwo",
+  "city",
+  "state",
+  "zip",
+];
+
+const $set = addressFields.reduce((fields, key) => {
+  if (req?.body?.[key]) {
+    fields[`addresses.$.${key}`] = req.body[key];
+  }
+
+  return fields;
+}, {});
+
+if (!Object.keys($set).length) {
+  const user = await userModel
+    .findById(_id)
+    .select("addresses");
+
+  return res.send(user.addresses);
+}
+
+const user = await userModel.findOneAndUpdate(
+  { _id, "addresses._id": addressId },
+  { $set },
+  { new: true, select: "addresses" }
+);
+
+if (user) {
+  return res.send(user.addresses);
+}
+
+
+File: Server/Controllers/orderControllers.js
+--------------------------------------------
+
+1. FETCH_ORDERS wrapper and sort
+
+Before:
+module.exports.FETCH_ORDERS = async (req, res) => {
+  const { _id } = req.user;
+
+  try {
+    let response = await userModal
+      .findById(_id)
+      .select("order")
+      .populate({
+        path: "order",
+        populate: {
+          path: "products.product",
+          model: "products",
+        },
+      });
+
+    res.send(response);
+  } catch {
+    (err) => {
+      res.status(500);
+    };
+  }
+};
+
+After:
+module.exports.FETCH_ORDERS = AsynceHandler(async (req, res) => {
+  const { _id } = req.user;
+
+  try {
+    let response = await userModal
+      .findById(_id)
+      .select("order")
+      .populate({
+        path: "order",
+        options: {
+          sort: { createdAt: -1, _id: -1 },
+        },
+        populate: {
+          path: "products.product",
+          model: "products",
+        },
+      });
+
+    res.send(response);
+  } catch {
+    (err) => {
+      res.status(500);
+    };
+  }
+});
+
+
+2. PLACE_ORDER user lookup
+
+Before:
+let user = await userModal.findById(_id);
+
+After:
+let user = await userModal.findById(_id).select("addresses order");
+
+
+3. PLACE_ORDER product order-count update
+
+Before:
+if (finalorder) {
+  finalorder.products.map(async (i) => {
+    await ProductModel.findByIdAndUpdate(
+      { _id: i.product },
+      {
+        $push: {
+          orders: { user: _id, count: i.quantity },
+        },
+        $inc: { ordercount: i.quantity },
+      }
+    );
+  });
+}
+
+After:
+if (finalorder) {
+  Promise.all(
+    finalorder.products.map((i) =>
+      ProductModel.findByIdAndUpdate(
+        { _id: i.product },
+        {
+          $push: {
+            orders: { user: _id, count: i.quantity },
+          },
+          $inc: { ordercount: i.quantity },
+        }
+      )
+    )
+  ).catch(console.error);
+}
+
+
+4. PLACE_ORDER attaching order to user
+
+Before:
+let user = await userModal.findById(_id);
+user.order.push(newOrder._id);
+await user.save();
+res.json(newOrder);
+
+After:
+await userModal.findByIdAndUpdate(_id, {
+  $push: { order: newOrder._id },
+});
+res.json(newOrder);
+
+
+File: Server/Controllers/productControllers.js
+----------------------------------------------
+
+1. Added missing import
+
+Before:
+const couponModel = require("../Models/Coupon.model");
+
+After:
+const couponModel = require("../Models/Coupon.model");
+const PropertiesModel = require("../Models/Properties.model");
+
+
+2. Added shared coupon helper
+
+Added:
+function applyCouponDiscount(cart) {
+  if (!cart.CouponApplied) return;
+
+  cart.totalAfterDiscount =
+    cart.cartTotal -
+    (cart.cartTotal * cart.CouponApplied.discount) / 100;
+
+  if (cart.cartTotal - cart.totalAfterDiscount > cart.CouponApplied.upTo) {
+    cart.totalAfterDiscount = cart.cartTotal - cart.CouponApplied.upTo;
+  }
+}
+
+
+3. ADD_TO_CART existing item coupon recalculation
+
+Before:
+if (Cart.CouponApplied) {
+  Cart.totalAfterDiscount =
+    Cart.cartTotal -
+    (Cart.cartTotal * Cart.CouponApplied.discount) / 100;
+
+  if (Cart.totalAfterDiscount > Cart.CouponApplied.upTo) {
+    Cart.totalAfterDiscount = Cart.cartTotal - Cart.CouponApplied.upTo;
+  }
+}
+
+After:
+applyCouponDiscount(Cart);
+
+
+4. ADD_TO_CART duplicate $inc fix
+
+Before:
+await productModel.findByIdAndUpdate(
+  productId,
+  {
+    $inc: { "carts.$[i].count": 1 },
+    $inc: { cartcount: 1 },
+  },
+  {
+    arrayFilters: [
+      {
+        "i.user": _id,
+      },
+    ],
+  },
+);
+
+After:
+await productModel.findByIdAndUpdate(
+  productId,
+  {
+    $inc: { "carts.$[i].count": 1, cartcount: 1 },
+  },
+  {
+    arrayFilters: [
+      {
+        "i.user": _id,
+      },
+    ],
+  },
+);
+
+
+5. ADD_TO_CART new item coupon recalculation
+
+Before:
+if (Cart.CouponApplied) {
+  Cart.totalAfterDiscount =
+    Cart.cartTotal -
+    (Cart.cartTotal * Cart.CouponApplied.discount) / 100;
+
+  if (Cart.totalAfterDiscount > Cart.CouponApplied.upTo) {
+    Cart.totalAfterDiscount = Cart.cartTotal - Cart.CouponApplied.upTo;
+  }
+  Cart.Total = Cart.totalAfterDiscount;
+}
+
+After:
+applyCouponDiscount(Cart);
+if (Cart.CouponApplied) {
+  Cart.Total = Cart.totalAfterDiscount;
+}
+
+
+6. EMPTY_CART async product cleanup
+
+Before:
+cart1.products.map(async (i) => {
+  await productModel.findByIdAndUpdate(i.product, {
+    $pull: {
+      carts: { user: _id },
+    },
+    $inc: {
+      cartcount: -i.quantity,
+    },
+  });
+});
+
+After:
+await Promise.all(
+  cart1.products.map((i) =>
+    productModel.findByIdAndUpdate(i.product, {
+      $pull: {
+        carts: { user: _id },
+      },
+      $inc: {
+        cartcount: -i.quantity,
+      },
+    })
+  )
+);
+
+
+7. REMOVE_FROM_CART coupon recalculation
+
+Before:
+if (cart.CouponApplied) {
+  cart.totalAfterDiscount =
+    cart.cartTotal - (cart.cartTotal * cart.CouponApplied.discount) / 100;
+
+  if (
+    cart.cartTotal - cart.totalAfterDiscount >
+    cart.CouponApplied.upTo
+  ) {
+    cart.totalAfterDiscount = cart.cartTotal - cart.CouponApplied.upTo;
+  }
+}
+
+After:
+applyCouponDiscount(cart);
+
+
+8. DECREMENT coupon recalculation
+
+Before:
+if (cart.CouponApplied) {
+  cart.totalAfterDiscount =
+    (cart.cartTotal - (cart.cartTotal * cart.CouponApplied.discount) / 100)|0;
+
+  if (cart.cartTotal - cart.totalAfterDiscount > cart.CouponApplied.upTo) {
+    cart.totalAfterDiscount = cart.cartTotal - cart.CouponApplied.upTo;
+  }
+}
+
+After:
+if (cart.CouponApplied) {
+  applyCouponDiscount(cart);
+  cart.totalAfterDiscount = cart.totalAfterDiscount | 0;
+}
+
+
+9. INCREMENT coupon recalculation and debug log removal
+
+Before:
+if (cart.CouponApplied) {
+  cart.totalAfterDiscount =
+    (cart.cartTotal - (cart.cartTotal * cart.CouponApplied.discount) / 100)|0;
+
+  if (cart.cartTotal - cart.totalAfterDiscount > cart.CouponApplied.upTo) {
+    cart.totalAfterDiscount = cart.cartTotal - cart.CouponApplied.upTo;
+  }
+}
+console.log(cart.cartTotal, cart.totalAfterDiscount);
+
+After:
+if (cart.CouponApplied) {
+  applyCouponDiscount(cart);
+  cart.totalAfterDiscount = cart.totalAfterDiscount | 0;
+}
+
+
+File: Server/Controllers/emailController.js
+-------------------------------------------
+
+1. Reused nodemailer transporter
+
+Before:
+module.exports.SEND_EMAIL = AsynceHandler(async (data, req, res) => {
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    // auth: {
+    //   user: process.env.MAIL_ID,
+    //   pass: process.env.MAIL_PW,
+    // },
+  });
+
+  const info = await transporter.sendMail({
+    from: '"Hey ðŸ‘»" <ashishkumar155223@gmail.com>',
+    to: data.to,
+    subject: data.subject,
+    text: data.text,
+    html: data.htm,
+  });
+
+});
+
+After:
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  // auth: {
+  //   user: process.env.MAIL_ID,
+  //   pass: process.env.MAIL_PW,
+  // },
+});
+
+module.exports.SEND_EMAIL = AsynceHandler(async (data, req, res) => {
+  const info = await transporter.sendMail({
+    from: '"Hey ðŸ‘»" <ashishkumar155223@gmail.com>',
+    to: data.to,
+    subject: data.subject,
+    text: data.text,
+    html: data.htm,
+  });
+
+});
+
+
+Validation
+----------
+Ran syntax checks:
+node --check Server\Controllers\adminControllers.js
+node --check Server\Controllers\authControllers.js
+node --check Server\Controllers\orderControllers.js
+node --check Server\Controllers\productControllers.js
+node --check Server\Controllers\emailController.js
+
+All checks passed.

@@ -1,0 +1,41 @@
+/* Contact modal form layout and controls. */
+.modal-body {
+  padding: 0px !important;
+  height: 600px;
+  }
+
+
+.modal-custom-header {
+  position: relative;
+ 
+}
+
+.hoverIcon {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  border: 0;
+  width: 45px;
+  height: 45px;
+  padding: 13px;
+  background-color: transparent;
+}
+
+.contact {
+ 
+  border-radius: 20px;
+  width: 600 px;
+  height: 600px;
+  
+}
+
+.contact-image {
+  width: 498px;
+  height: 220px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.contact-button {
+  background-color: rgb(230, 228, 228);
+}
