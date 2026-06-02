@@ -96,13 +96,13 @@ function ProductSlide({ heading, Products = [], name, category }) {
         </button>
       </div>
 
-     <div
-  id={name}
-  className="carousel slide"
-  data-bs-ride="carousel"
-  data-bs-touch="true"
-  data-bs-pause="false"
->
+      <div
+        id={name}
+        className="carousel slide slider-carousel"
+        data-bs-ride="carousel"
+        data-bs-touch="true"
+        data-bs-pause="false"
+      >
         <div className="carousel-inner">
           {slides.map((slide, index) => (
             <div
@@ -141,6 +141,7 @@ function ProductSlide({ heading, Products = [], name, category }) {
           </>
         )}
       </div>
+
     </section>
   );
 }

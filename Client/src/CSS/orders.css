@@ -428,12 +428,52 @@ a.order-details-image:hover {
 
 .order-rate-stars {
   display: flex;
+  align-items: center;
   gap: 2px;
   margin-bottom: 5px;
 }
 
+.order-rate-star-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.order-rate-stars .hidden-radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .order-rate-stars .review-star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 18px;
+  line-height: 1;
+  color: #c8cdd4;
+  transition: color 0.15s ease, transform 0.15s ease;
+  user-select: none;
+}
+
+.order-rate-stars .review-star.active-star {
+  color: #f5a623;
+}
+
+.order-rate-star-label:hover .review-star {
+  transform: scale(1.08);
+}
+
+.order-rate-stars .hidden-radio:focus-visible + .review-star {
+  outline: 2px solid rgba(31, 79, 191, 0.35);
+  outline-offset: 2px;
+  border-radius: 3px;
 }
 
 .order-rate-input-row {

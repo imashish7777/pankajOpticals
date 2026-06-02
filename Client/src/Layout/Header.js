@@ -99,6 +99,14 @@ function Header() {
     }
   };
 
+  const handleSearchKeyDown = (event) => {
+    if (event.key !== "Enter") return;
+
+    setTimeout(() => {
+      handleSearchClick();
+    }, 0);
+  };
+
   const handlePrivateLinkClick = (event) => {
     const isLoggedIn =
       localStorage.getItem("loggedin") === "true" &&
@@ -138,6 +146,7 @@ function Header() {
               options={value ? finaloptions : []}
               onSelect={onSelect}
               onChange={handleSearch}
+              onKeyDown={handleSearchKeyDown}
               size="large"
             />
 

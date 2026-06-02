@@ -81,9 +81,9 @@ function Footer() {
             Pankaj Opticals caters to every customer with several deals and offers.
             A one-stop online solution for eyewear and accessories.
 
-            <Link to="/products/Sunglasses"> Sunglasses </Link>
-            and
-            <Link to="/products/Eyeglasses"> Eyeglasses </Link>
+            <Link to="/products/Sunglasses"> Sunglasses</Link>,
+            
+            <Link to="/products/Eyeglasses"> Eyeglasses </Link> and <Link to="/products/computerglasses"> Computer Glasses </Link>
             are available for men and women.
           </p>
         </div>

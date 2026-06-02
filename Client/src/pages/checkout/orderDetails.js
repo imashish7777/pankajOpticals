@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../../utilies/base_URL";
+import { getAuthHeaders } from "../../utilies/authHeaders";
 import React, {
   useState,
   useEffect,
@@ -22,8 +23,6 @@ function OrderDetails() {
   const [loading, setLoading] = useState(true);
   const [hover, setHover] = useState({});
 
-  const token = localStorage.getItem("token");
-
   const fetchOrderDetails = useCallback(async () => {
     try {
       setLoading(true);
@@ -32,9 +31,7 @@ function OrderDetails() {
         method: "post",
         url: `${API_BASE_URL}/order/fetchorderdetails`,
         data: { orderId },
-        headers: {
-          "x-auth-token": token,
-        },
+        headers: getAuthHeaders(),
       });
 
       if (response?.data) {
@@ -45,7 +42,7 @@ function OrderDetails() {
     } finally {
       setLoading(false);
     }
-  }, [orderId, token]);
+  }, [orderId]);
 
   useEffect(() => {
     fetchOrderDetails();
@@ -166,9 +163,15 @@ function OrderDetails() {
                             <div className="order-rate-stars">
                               {[...Array(5)].map((_, index) => {
                                 const currentRating = index + 1;
+                                const selectedRating =
+                                  hover[product._id] ||
+                                  Number(formik.values.rating);
 
                                 return (
-                                  <label key={index}>
+                                  <label
+                                    key={index}
+                                    className="order-rate-star-label"
+                                  >
                                     <Field
                                       className="hidden-radio"
                                       type="radio"
@@ -178,7 +181,7 @@ function OrderDetails() {
 
                                     <span
                                       className={`review-star ${
-                                        currentRating <= hover[product._id]
+                                        currentRating <= selectedRating
                                           ? "active-star"
                                           : ""
                                       }`}

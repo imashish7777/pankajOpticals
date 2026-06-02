@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../../../utilies/base_URL";
+import { getAuthHeaders } from "../../../utilies/authHeaders";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -8,9 +9,6 @@ const initialState = {
   error: "",
   totalratings:""
 };
-
-const token=window.localStorage.getItem("token");
-
 
 export const FETCH_RATINGS = createAsyncThunk("ratings", async (productId) => {
   return axios({
@@ -24,9 +22,7 @@ export const GIVE_RATINGS = createAsyncThunk("ratings", async (data) => {
     method: "put",
     url: `${API_BASE_URL}/product/giveratings`,
     data: data,
-    headers: {
-      "x-auth-token": token
-    },
+    headers: getAuthHeaders(),
   }).then((response) => response.data);
 });
 

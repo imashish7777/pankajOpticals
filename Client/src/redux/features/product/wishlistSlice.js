@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../../../utilies/base_URL";
+import { getAuthHeaders } from "../../../utilies/authHeaders";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -8,15 +9,11 @@ export const initialState = {
   status: "",
 };
 
-const token=window.localStorage.getItem("token");
-
 export const FETCH_WISHLIST = createAsyncThunk("Wishlist", async () => {
   return await axios({
     method: "get",
     url: `${API_BASE_URL}/product/fetchwishlist`,
-    headers: {
-      "x-auth-token": token,
-    },
+    headers: getAuthHeaders(),
   }).then((response) => response);
 });
 
@@ -26,9 +23,7 @@ export const REMOVE_FROM_WISHLIST = createAsyncThunk(
     return await axios({
       method: "put",
       url: `${API_BASE_URL}/product/removefromwishlist`,
-      headers: {
-        "x-auth-token":token,
-      },
+      headers: getAuthHeaders(),
       data: data,
     }).then((response) => response);
   }
@@ -40,9 +35,7 @@ export const ADD_TO_WISHLIST = createAsyncThunk(
     return await axios({
       method: "put",
       url: `${API_BASE_URL}/product/addtowishlist`,
-      headers: {
-        "x-auth-token": token,
-      },
+      headers: getAuthHeaders(),
       data: data,
     }).then((response) => response);
   }

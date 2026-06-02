@@ -61,14 +61,7 @@ function App() {
             </Route>
            
             
-            <Route
-              path="cart"
-              element={
-                <Privateroutes>
-                  <Cart />
-                </Privateroutes>
-              }
-            />
+            
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="about" element={<About />} />
@@ -101,6 +94,14 @@ function App() {
               element={
                 <Privateroutes>
                   <OrderDetails />
+                </Privateroutes>
+              }
+            />
+            <Route
+              path="cart"
+              element={
+                <Privateroutes>
+                  <Cart />
                 </Privateroutes>
               }
             />

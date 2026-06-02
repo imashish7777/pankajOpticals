@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../../../utilies/base_URL";
+import { getAuthHeaders } from "../../../utilies/authHeaders";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -9,15 +10,11 @@ export const initialState = {
   couponStatus: "notApplied",
 };
 
-const token = window.localStorage.getItem("token");
-
 export const FETCH_CART = createAsyncThunk("cart", async () => {
   return axios({
     method: "get",
     url: `${API_BASE_URL}/product/fetchcart`,
-    headers: {
-      "x-auth-token": token,
-    },
+    headers: getAuthHeaders(),
   }).then((response) => response);
 });
 
@@ -26,9 +23,7 @@ export const ADD_TO_CART = createAsyncThunk("cartmethod", async (data) => {
     method: "post",
     url: `${API_BASE_URL}/product/addtocart`,
     data: data,
-    headers: {
-      "x-auth-token": token,
-    },
+    headers: getAuthHeaders(),
   }).then((response) => response);
 });
 
@@ -36,9 +31,7 @@ export const REMOVE_FROM_CART = createAsyncThunk("cartmethod", async (data) => {
   return axios({
     method: "post",
     url: `${API_BASE_URL}/product/removefromcart`,
-    headers: {
-      "x-auth-token": token,
-    },
+    headers: getAuthHeaders(),
     data: data,
   }).then((response) => response);
 });
@@ -47,9 +40,7 @@ export const DECREMENT = createAsyncThunk("cartmethod", async (data) => {
   return axios({
     method: "post",
     url: `${API_BASE_URL}/product/decrement`,
-    headers: {
-      "x-auth-token": token,
-    },
+    headers: getAuthHeaders(),
     data: data,
   }).then((response) => response);
 });
@@ -58,9 +49,7 @@ export const INCREMENT = createAsyncThunk("cartmethod", async (data) => {
   return axios({
     method: "post",
     url: `${API_BASE_URL}/product/increment`,
-    headers: {
-      "x-auth-token": token,
-    },
+    headers: getAuthHeaders(),
     data: data,
   }).then((response) => response);
 });
@@ -69,9 +58,7 @@ export const APPLY_COUPON = createAsyncThunk("couponmethod", async (data) => {
   return axios({
     method: "post",
     url: `${API_BASE_URL}/product/applycoupon`,
-    headers: {
-      "x-auth-token": token,
-    },
+    headers: getAuthHeaders(),
     data: data,
   }).then((response) => response);
 });
@@ -79,9 +66,7 @@ export const REMOVE_COUPON = createAsyncThunk("couponmethod", async (data) => {
   return axios({
     method: "put",
     url: `${API_BASE_URL}/product/removecoupon`,
-    headers: {
-      "x-auth-token": token,
-    },
+    headers: getAuthHeaders(),
     data: data,
   }).then((response) => response);
 });
@@ -90,9 +75,7 @@ export const emptycart = createAsyncThunk("cartmethod", async (req, res) => {
   return axios({
     method: "delete",
     url: `${API_BASE_URL}/product/emptycart`,
-    headers: {
-      "x-auth-token": token,
-    },
+    headers: getAuthHeaders(),
   }).then((response) => response);
 });
 

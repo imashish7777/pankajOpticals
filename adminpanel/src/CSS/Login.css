@@ -11,11 +11,10 @@
 
 .login {
   border-radius: 20px;
-  width: 40%;
+  width: min(92vw, 440px);
   border:1px solid lightgray;
   background-color: rgb(248, 247, 247);
-  margin-top: 10%;
-  margin-inline: 30%;
+  margin: 0 auto;
   
 }
 
@@ -28,4 +27,55 @@
   color: red;
   font-size: 10px;
   height: 15px;
+}
+
+.Login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: #f5f6f8;
+}
+
+.login-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-fillups {
+  margin: clamp(18px, 6vw, 48px) !important;
+}
+
+.login .form-control,
+.login .input-group-text,
+.login-button {
+  min-height: 42px;
+}
+
+.login-button {
+  width: 100%;
+}
+
+@media (max-width: 576px) {
+  .Login {
+    align-items: center;
+    padding: 12px;
+  }
+
+  .login {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 14px;
+  }
+
+  .signin-text {
+    font-size: 20px !important;
+  }
+
+  .login .row.mb-4 {
+    margin-bottom: 14px !important;
+  }
 }

@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../../../utilies/base_URL";
+import { getAuthHeaders } from "../../../utilies/authHeaders";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 const initialState = {
@@ -7,15 +8,11 @@ const initialState = {
   status: "",
 };
 
-const token=window.localStorage.getItem("token");
-
 export const PLACE_ORDER = createAsyncThunk("placeorder", async (body) => {
   return axios({
     method: "post",
     url: `${API_BASE_URL}/order/placeorder`,
-    headers: {
-      "x-auth-token": token
-    },
+    headers: getAuthHeaders(),
     data: body,
   }).then((response) => response.data);
 });
@@ -40,5 +37,4 @@ export const placeorderSlice = createSlice({
 });
 
 export default placeorderSlice.reducer;
-
 

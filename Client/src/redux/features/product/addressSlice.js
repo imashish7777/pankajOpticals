@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../../../utilies/base_URL";
+import { getAuthHeaders } from "../../../utilies/authHeaders";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -8,16 +9,11 @@ const initialState = {
   error: "",
 };
 
-const token=window.localStorage.getItem("token");
-
-
 export const fetchaddress = createAsyncThunk("address", async () => {
   return await axios({
     method: "get",
     url: `${API_BASE_URL}/auth/getAddress`,
-    headers: {
-      "x-auth-token": token,
-    },
+    headers: getAuthHeaders(),
   }).then((response) => response.data);
 });
 
@@ -25,9 +21,7 @@ export const addAddress = createAsyncThunk("address", async (values) => {
   return await axios({
     method: "post",
     url: `${API_BASE_URL}/auth/addAddress`,
-    headers: {
-      "x-auth-token": token,
-    },
+    headers: getAuthHeaders(),
     data: values,
   }).then((response) => response.data);
 });
@@ -36,9 +30,7 @@ export const deleteAddress = createAsyncThunk("address", async (_id) => {
   return await axios({
     method: "delete",
     url: `${API_BASE_URL}/auth/deleteAddress/${_id}`,
-    headers: {
-      "x-auth-token": token,
-    },
+    headers: getAuthHeaders(),
   }).then((response) => response.data);
 });
 
@@ -49,9 +41,7 @@ export const updateAddress = createAsyncThunk(
     return await axios({
       method: "post",
       url: `${API_BASE_URL}/auth/updateAddress/${_id}`,
-      headers: {
-        "x-auth-token": token,
-      },
+      headers: getAuthHeaders(),
       data: values,
     }).then((response)=>response.data);
   }

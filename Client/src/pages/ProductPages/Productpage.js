@@ -227,6 +227,23 @@ export default function Productpage() {
               {i.Brand}
             </Tag>
           ))}
+           {shape.map((i) => (
+            <Tag key={i.shape} closable onClose={() => removeFilter(i.shape, shape, setShape, "shape")}>
+              {i.shape}
+            </Tag>
+          ))}{frameType.map((i) => (
+            <Tag key={i.frameType} closable onClose={() => removeFilter(i.frameType, frameType, setFrameType, "frameType")}>
+              {i.frameType}
+            </Tag>
+          ))}{size.map((i) => (
+            <Tag key={i.size} closable onClose={() => removeFilter(i.size, size, setSize, "size")}>
+              {i.size}
+            </Tag>
+          ))}{color.map((i) => (
+            <Tag key={i.color} closable onClose={() => removeFilter(i.color, color, setColor, "color")}>
+              {i.color}
+            </Tag>
+          ))}
         </div>
 
         <div className="mobile-actions">

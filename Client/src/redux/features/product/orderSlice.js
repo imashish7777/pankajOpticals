@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../../../utilies/base_URL";
+import { getAuthHeaders } from "../../../utilies/authHeaders";
 import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -8,15 +9,11 @@ export const initialState = {
   status: "",
 };
 
-const token = window.localStorage.getItem("token");
-
 export const FETCH_ORDERS = createAsyncThunk("order", async () => {
   return axios({
     method: "get",
     url: `${API_BASE_URL}/order/fetchorders`,
-    headers: {
-      "x-auth-token": token,
-    },
+    headers: getAuthHeaders(),
   }).then((response) => response);
 });
 
