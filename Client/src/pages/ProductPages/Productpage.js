@@ -282,7 +282,7 @@ export default function Productpage() {
       <hr />
 
       {/* LAYOUT */}
-      <div className="layout">
+      <div className="product-layout">
 
         {/* FILTER */}
         {isMobileFilterOpen && (

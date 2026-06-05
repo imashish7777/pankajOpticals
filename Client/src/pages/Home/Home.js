@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "../../CSS/home.css";
 import ProductSlide from "./ProductSlide";
 import axios from "axios";
+import HomeSkeleton from "../../component/homeskeleton";
 
 function Home() {
   const [products, setProducts] = useState({
@@ -12,6 +13,7 @@ function Home() {
     femaleEyeglasses: [],
     femaleSunglasses: [],
   });
+  const [loading, setLoading] = useState(true);
 
   // reusable fetch function
   const fetchProducts = async (category, gender) => {
@@ -53,31 +55,45 @@ function Home() {
     isAuthenticated();
 
     const loadProducts = async () => {
-      const [
-        eyeglasses,
-        sunglasses,
-        computerGlasses,
-        femaleEyeglasses,
-        femaleSunglasses,
-      ] = await Promise.all([
-        fetchProducts("eyeglasses", "male"),
-        fetchProducts("sunglasses", "male"),
-        fetchProducts("computerglasses", "male"),
-        fetchProducts("eyeglasses", "female"),
-        fetchProducts("sunglasses", "female"),
-      ]);
+      setLoading(true);
 
-      setProducts({
-        eyeglasses,
-        sunglasses,
-        computerGlasses,
-        femaleEyeglasses,
-        femaleSunglasses,
-      });
+      try {
+        const [
+          eyeglasses,
+          sunglasses,
+          computerGlasses,
+          femaleEyeglasses,
+          femaleSunglasses,
+        ] = await Promise.all([
+          fetchProducts("eyeglasses", "male"),
+          fetchProducts("sunglasses", "male"),
+          fetchProducts("computerglasses", "male"),
+          fetchProducts("eyeglasses", "female"),
+          fetchProducts("sunglasses", "female"),
+        ]);
+
+        setProducts({
+          eyeglasses,
+          sunglasses,
+          computerGlasses,
+          femaleEyeglasses,
+          femaleSunglasses,
+        });
+      } finally {
+        setLoading(false);
+      }
     };
 
     loadProducts();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="home mt-3">
+        <HomeSkeleton />
+      </div>
+    );
+  }
 
   return (
     <div className="home mt-3">
